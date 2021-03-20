@@ -16,7 +16,6 @@
 		F9C4D17625F5167900F2C894 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C4D17525F5167900F2C894 /* View.swift */; };
 		F9C4D17A25F5176600F2C894 /* View+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C4D17925F5176600F2C894 /* View+ViewModel.swift */; };
 		F9C4D18225F53D6500F2C894 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C4D18125F53D6500F2C894 /* Configuration.swift */; };
-		F9EC007626065FEB00C1393F /* Indicate.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F9EC007526065FEB00C1393F /* Indicate.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		F9C4D17525F5167900F2C894 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F9C4D17925F5176600F2C894 /* View+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ViewModel.swift"; sourceTree = "<group>"; };
 		F9C4D18125F53D6500F2C894 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		F9EC007526065FEB00C1393F /* Indicate.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Indicate.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +46,6 @@
 		F9C4D0FE25F4FC5200F2C894 = {
 			isa = PBXGroup;
 			children = (
-				F9EC007526065FEB00C1393F /* Indicate.podspec */,
 				F9C4D10A25F4FC5200F2C894 /* Indicate */,
 				F9C4D10925F4FC5200F2C894 /* Products */,
 			);
@@ -175,7 +172,6 @@
 			files = (
 				F9C4D12325F4FC7300F2C894 /* LaunchScreen.storyboard in Resources */,
 				F9C4D12225F4FC7300F2C894 /* Assets.xcassets in Resources */,
-				F9EC007626065FEB00C1393F /* Indicate.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
