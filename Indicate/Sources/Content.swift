@@ -1,5 +1,5 @@
 //
-//  Message.swift
+//  Content.swift
 //  Indicate
 //
 //  Created by Philip Kluz on 2021-03-07.
