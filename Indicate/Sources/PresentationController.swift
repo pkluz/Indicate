@@ -29,8 +29,6 @@ extension Indicate {
         
         private let indicator: View
         
-        private var configuration: Configuration
-        
         private var animators: [AnimatorType: UIViewPropertyAnimator] = [:]
         
         private lazy var tapGestureRecognizer: UITapGestureRecognizer = {
@@ -51,6 +49,9 @@ extension Indicate {
         
         /// Contents to be presented.
         public private(set) var content: Content
+        
+        /// The presentation controller's underlying configuration.
+        public let configuration: Configuration
         
         // MARK: PresentationController (Public Methods)
         
@@ -217,7 +218,7 @@ extension Indicate {
             dismissTimer?.invalidate()
             dismissTimer = nil
             
-            let timer = Timer(timeInterval: 3.0,
+            let timer = Timer(timeInterval: configuration.duration,
                               target: self,
                               selector: #selector(dismiss(_:)),
                               userInfo: nil,
@@ -269,7 +270,6 @@ extension Indicate {
             guard position == .end else { return }
             
             configuration.dismissed?(self)
-            configuration = .default
             
             invalidateDismissTimerIfNeeded()
             animators.removeAll()
