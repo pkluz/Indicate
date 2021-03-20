@@ -30,6 +30,9 @@
 		F9C4D17525F5167900F2C894 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F9C4D17925F5176600F2C894 /* View+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ViewModel.swift"; sourceTree = "<group>"; };
 		F9C4D18125F53D6500F2C894 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		F9EC00F826067BA700C1393F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F9EC00FB26067BAB00C1393F /* IndicateKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IndicateKit.podspec; sourceTree = "<group>"; };
+		F9EC00FE26067BB200C1393F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +49,9 @@
 		F9C4D0FE25F4FC5200F2C894 = {
 			isa = PBXGroup;
 			children = (
+				F9EC00F826067BA700C1393F /* README.md */,
+				F9EC00FB26067BAB00C1393F /* IndicateKit.podspec */,
+				F9EC00FE26067BB200C1393F /* LICENSE */,
 				F9C4D10A25F4FC5200F2C894 /* Indicate */,
 				F9C4D10925F4FC5200F2C894 /* Products */,
 			);

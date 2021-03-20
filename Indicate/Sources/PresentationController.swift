@@ -10,6 +10,7 @@ import UIKit
 
 extension Indicate {
     
+    /// This object manages the presentation of an `Indicate` view. It takes care of the entire lifecycle, gesture handling, and animations.
     public final class PresentationController: NSObject {
         
         // MARK: PresentationController (Private Types)
@@ -43,10 +44,16 @@ extension Indicate {
         
         // MARK: PresentationController (Public Properties)
         
+        /// Contents to be presented.
         public private(set) var content: Content
         
         // MARK: PresentationController (Public Methods)
         
+        /// Instantiate a new `PresentationController` to manage the lifecycle of an `Indicate` indicator.
+        ///
+        /// - Parameters:
+        ///   - content: Content to present inside of the `Indicate` indicator.
+        ///   - configuration: Configuration controlling various aspects of the presentation like interaction and sizing.
         public init(content inContent: Content, configuration inConfiguration: Configuration = .default) {
             content = inContent
             configuration = inConfiguration
@@ -65,6 +72,9 @@ extension Indicate {
             }
         }
         
+        /// Present an indicator on the given `view`.
+        ///
+        /// - Parameter view: View to present the indicator ontop of.
         @objc
         public func present(in view: UIView) {
             view.addSubview(indicator)
@@ -98,6 +108,8 @@ extension Indicate {
             animators[.show]?.startAnimation()
         }
         
+        /// Dismiss the indicator.
+        /// - Parameter sender: Arbitrary object triggering the dismissal. **Optional**
         @objc
         public func dismiss(_ sender: Any? = nil) {
             invalidateDismissTimerIfNeeded()
@@ -266,7 +278,7 @@ extension Indicate {
 @available(iOS 13.4, *)
 extension Indicate.PresentationController: UIPointerInteractionDelegate {
     
-    public func enablePointerInteraction() {
+    internal func enablePointerInteraction() {
         indicator.addInteraction(UIPointerInteraction(delegate: self))
     }
     

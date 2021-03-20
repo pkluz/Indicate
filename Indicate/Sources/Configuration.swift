@@ -12,24 +12,32 @@ import UIKit
 
 extension Indicate {
     
+    /// Configuration structure controlling various aspects of the `Indicate` indicator.
     public struct Configuration {
         
         public typealias Action = (PresentationController) -> Void
         
         // MARK: Configuration (Public Properties)
         
+        /// Handler invoked whenever the user taps on the indicator.
         public let tap: Action?
         
+        /// Handler invoked whenever the indicator appears on-screen.
         public let appeared: Action?
         
+        /// Handler invoked whenever the indicator disappears off-screen.
         public let dismissed: Action?
         
+        /// Size of the indicator (excluding shadows).
         public let size: CGSize
         
+        /// Padding to apply around the content area inside the indicator.
         public let contentPadding: UIEdgeInsets
         
+        /// Spacing between various items inside the content area of the indicator (e.g. image view and text area).
         public let horizontalItemSpacing: CGFloat
         
+        /// Default configuration.
         public static let `default`: Configuration = Configuration()
         
         // MARK: Configuration (Private Static  Properties)
@@ -42,6 +50,15 @@ extension Indicate {
         
         // MARK: Configuration (Public Methods)
         
+        /// Instantiate a new `Configuration` structure.
+        ///
+        /// - Parameters:
+        ///   - tap: Handler invoked whenever the user taps on the indicator.
+        ///   - appeared: Handler invoked whenever the indicator appears on-screen.
+        ///   - dismissed: Handler invoked whenever the indicator disappears off-screen.
+        ///   - size: Size of the indicator (excluding shadows).
+        ///   - contentPadding: Padding to apply around the content area inside the indicator.
+        ///   - horizontalItemSpacing: Spacing between various items inside the content area of the indicator (e.g. image view and text area).
         public init(tap: Action? = nil, appeared: Action? = nil, dismissed: Action? = nil, size: CGSize? = nil, contentPadding: UIEdgeInsets? = nil, horizontalItemSpacing: CGFloat? = nil) {
             self.tap = tap
             self.appeared = appeared
@@ -57,26 +74,32 @@ extension Indicate {
 
 extension Indicate.Configuration {
     
+    /// Create a copy of the current configuration structure with a new `tap` handler.
     public func with(tap: Action?) -> Self {
         return Indicate.Configuration(tap: tap, appeared: appeared, dismissed: dismissed, size: size, contentPadding: contentPadding, horizontalItemSpacing: horizontalItemSpacing)
     }
     
+    /// Create a copy of the current configuration structure with a new `appeared` handler.
     public func with(appeared: Action?) -> Self {
         return Indicate.Configuration(tap: tap, appeared: appeared, dismissed: dismissed, size: size, contentPadding: contentPadding, horizontalItemSpacing: horizontalItemSpacing)
     }
     
+    /// Create a copy of the current configuration structure with a new `dismissed` handler.
     public func with(dismissed: Action?) -> Self {
         return Indicate.Configuration(tap: tap, appeared: appeared, dismissed: dismissed, size: size, contentPadding: contentPadding, horizontalItemSpacing: horizontalItemSpacing)
     }
     
+    /// Create a copy of the current configuration structure with a new `size` value.
     public func with(size: CGSize) -> Self {
         return Indicate.Configuration(tap: tap, appeared: appeared, dismissed: dismissed, size: size, contentPadding: contentPadding, horizontalItemSpacing: horizontalItemSpacing)
     }
     
+    /// Create a copy of the current configuration structure with a new `contentPadding` value.
     public func with(contentPadding: UIEdgeInsets) -> Self {
         return Indicate.Configuration(tap: tap, appeared: appeared, dismissed: dismissed, size: size, contentPadding: contentPadding, horizontalItemSpacing: horizontalItemSpacing)
     }
     
+    /// Create a copy of the current configuration structure with a new `horizontalItemSpacing` value.
     public func with(horizontalItemSpacing: CGFloat) -> Self {
         return Indicate.Configuration(tap: tap, appeared: appeared, dismissed: dismissed, size: size, contentPadding: contentPadding, horizontalItemSpacing: horizontalItemSpacing)
     }

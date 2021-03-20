@@ -10,11 +10,11 @@ import UIKit
 
 extension Indicate {
     
-    public final class ViewModel {
+    internal final class ViewModel {
         
-        // MARK: ViewModel (Public Properties)
+        // MARK: ViewModel (internal Properties)
         
-        public lazy var attributedTitle: NSAttributedString = {
+        internal lazy var attributedTitle: NSAttributedString = {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = content.title.alignment
             paragraphStyle.lineBreakMode = .byTruncatingTail
@@ -28,7 +28,7 @@ extension Indicate {
             return NSAttributedString(string: content.title.value, attributes: attributes)
         }()
         
-        public lazy var attributedSubtitle: NSAttributedString? = {
+        internal lazy var attributedSubtitle: NSAttributedString? = {
             guard let subtitle = content.subtitle else { return nil }
             
             let paragraphStyle = NSMutableParagraphStyle()
@@ -44,7 +44,7 @@ extension Indicate {
             return NSAttributedString(string: subtitle.value, attributes: attributes)
         }()
         
-        public lazy var attributedCompositeTitle: NSAttributedString = {
+        internal lazy var attributedCompositeTitle: NSAttributedString = {
             guard let attributedSubtitle = attributedSubtitle, attributedSubtitle.length > 0 else { return attributedTitle }
             
             let result = NSMutableAttributedString()
@@ -55,7 +55,7 @@ extension Indicate {
             return result
         }()
         
-        public var emoji: String? {
+        internal var emoji: String? {
             switch content.attachment {
             case .emoji(let emoji):
                 return emoji.value
@@ -64,17 +64,17 @@ extension Indicate {
             }
         }
         
-        public var isEmojiLabelHidden: Bool {
+        internal var isEmojiLabelHidden: Bool {
             guard let emoji = emoji else { return true }
             return emoji.isEmpty
         }
         
-        public var isEmojiLabelLeftAligned: Bool {
+        internal var isEmojiLabelLeftAligned: Bool {
             guard let attachment = content.attachment else { return true }
             return attachment.alignment == .left || (attachment.alignment == .natural && UIApplication.shared.userInterfaceLayoutDirection == .leftToRight)
         }
         
-        public var image: UIImage? {
+        internal var image: UIImage? {
             switch content.attachment {
             case .image(let image):
                 return image.value
@@ -83,29 +83,29 @@ extension Indicate {
             }
         }
         
-        public var isImageViewHidden: Bool {
+        internal var isImageViewHidden: Bool {
             guard let image = image else { return true }
             return image.size.width == 0.0 || image.size.height == 0.0
         }
         
-        public var isImageViewLeftAligned: Bool {
+        internal var isImageViewLeftAligned: Bool {
             guard let attachment = content.attachment else { return true }
             return attachment.alignment == .left || (attachment.alignment == .natural && UIApplication.shared.userInterfaceLayoutDirection == .leftToRight)
         }
         
-        public let size: CGSize
+        internal let size: CGSize
         
-        public let contentPadding: UIEdgeInsets
+        internal let contentPadding: UIEdgeInsets
         
-        public let horizontalItemSpacing: CGFloat
+        internal let horizontalItemSpacing: CGFloat
         
         // MARK: ViewModel (Private Properties)
         
         private let content: Content
         
-        // MARK: ViewModel (Public Methods)
+        // MARK: ViewModel (internal Methods)
         
-        public init(content: Content, size: CGSize, contentPadding: UIEdgeInsets, horizontalItemSpacing: CGFloat) {
+        internal init(content: Content, size: CGSize, contentPadding: UIEdgeInsets, horizontalItemSpacing: CGFloat) {
             self.content = content
             self.size = size
             self.contentPadding = contentPadding

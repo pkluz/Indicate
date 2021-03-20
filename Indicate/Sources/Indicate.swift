@@ -9,5 +9,5 @@
 import UIKit
 
 public enum Indicate {
-    
+    // Defines the `Indicate` namespace.
 }
