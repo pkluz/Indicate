@@ -10,6 +10,9 @@ import UIKit
 
 extension Indicate {
     
+    /// Internal storage of presentation controllers to avoid deallocation in case the user does not retain a strong reference to the controller themselves.
+    fileprivate static var activePresentationControllers: [UUID: PresentationController] = [:]
+    
     /// This object manages the presentation of an `Indicate` view. It takes care of the entire lifecycle, gesture handling, and animations.
     public final class PresentationController: NSObject {
         
@@ -21,6 +24,8 @@ extension Indicate {
         }
         
         // MARK: PresentationController (Private Properties)
+        
+        private let id: UUID = UUID()
         
         private let indicator: View
         
@@ -77,6 +82,9 @@ extension Indicate {
         /// - Parameter view: View to present the indicator ontop of.
         @objc
         public func present(in view: UIView) {
+            guard Indicate.activePresentationControllers[id] == nil else { return }
+            Indicate.activePresentationControllers[id] = self
+            
             view.addSubview(indicator)
             
             indicator.sizeToFit()
@@ -269,6 +277,8 @@ extension Indicate {
             indicator.removeGestureRecognizer(tapGestureRecognizer)
             indicator.removeGestureRecognizer(panGestureRecognizer)
             indicator.removeFromSuperview()
+            
+            Indicate.activePresentationControllers[id] = nil
         }
     }
 }

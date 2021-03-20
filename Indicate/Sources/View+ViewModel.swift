@@ -55,6 +55,17 @@ extension Indicate {
             return result
         }()
         
+        internal var hasAttachment: Bool {
+            switch content.attachment {
+            case .emoji(let emoji):
+                return emoji.value != nil
+            case .image(let image):
+                return image.value != nil
+            case .none:
+                return false
+            }
+        }
+        
         internal var emoji: String? {
             switch content.attachment {
             case .emoji(let emoji):

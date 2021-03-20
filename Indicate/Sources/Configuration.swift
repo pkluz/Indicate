@@ -44,7 +44,7 @@ extension Indicate {
         
         private static let defaultSize: CGSize = CGSize(width: 215.0, height: 50.0)
         
-        private static let defaultContentPadding: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 12.0, bottom: 8.0, right: 12.0)
+        private static let defaultContentPadding: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0)
         
         private static let defaultHorizontalItemSpacing: CGFloat = 8.0
         

@@ -140,13 +140,13 @@ public class MainViewController: UIViewController {
                 if emoji.value != nil {
                     return "With Emoji"
                 }
-                
+
                 return "No Emoji"
             case .image(let image):
                 if image.value != nil {
                     return "With Image"
                 }
-                
+
                 return "No Image"
             }
         }()

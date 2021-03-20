@@ -75,7 +75,7 @@ extension Indicate {
                     let x = max(imageView.bounds.maxX, emojiLabel.bounds.maxX) + viewModel.horizontalItemSpacing
                     return CGRect(x: x,
                                   y: 0.0,
-                                  width: contentView.bounds.width - viewModel.horizontalItemSpacing - x,
+                                  width: contentView.bounds.width - x,
                                   height: contentView.bounds.height)
                 }
                 
@@ -89,9 +89,12 @@ extension Indicate {
         }
         
         internal override func sizeThatFits(_ size: CGSize) -> CGSize {
-            let titleSize = titleLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: viewModel.size.height - viewModel.contentPadding.top - viewModel.contentPadding.bottom))
-            return CGSize(width: viewModel.contentPadding.left + titleSize.height + titleSize.width + titleSize.height + viewModel.contentPadding.right,
-                          height: viewModel.size.height)
+            let titleSize = titleLabel.sizeThatFits(size)
+            let attachmentWidth = viewModel.hasAttachment ? viewModel.size.height - (viewModel.contentPadding.top + viewModel.contentPadding.bottom) : 0.0
+            let size = CGSize(width: min(viewModel.size.width, viewModel.contentPadding.left + attachmentWidth + viewModel.horizontalItemSpacing + titleSize.width + viewModel.contentPadding.right),
+                              height: viewModel.size.height)
+            
+            return size
         }
         
         internal override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
