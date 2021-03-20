@@ -63,7 +63,7 @@ let config = Indicate.Configuration()
         
 // STEP 3: Present the indicator
 let controller = Indicate.PresentationController(content: content, configuration: config)
-controller?.present(in: view)
+controller.present(in: view)
 ```
 
 ## LICENSE
