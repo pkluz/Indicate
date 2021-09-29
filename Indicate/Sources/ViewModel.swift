@@ -20,7 +20,7 @@ extension Indicate {
             paragraphStyle.lineBreakMode = .byTruncatingTail
             
             let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor(named: "TitleColor", in: Bundle(for: Self.self), compatibleWith: nil) ?? UIColor.black,
+                .foregroundColor: UIColor(named: "TitleColor", in: .indicate, compatibleWith: nil) ?? UIColor.black,
                 .font: UIFont.boldSystemFont(ofSize: 13.0),
                 .paragraphStyle: paragraphStyle
             ]
@@ -36,7 +36,7 @@ extension Indicate {
             paragraphStyle.lineBreakMode = .byTruncatingTail
             
             let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor(named: "SubtitleColor", in: Bundle(for: Self.self), compatibleWith: nil) ?? UIColor.darkGray,
+                .foregroundColor: UIColor(named: "SubtitleColor", in: .indicate, compatibleWith: nil) ?? UIColor.darkGray,
                 .font: UIFont.boldSystemFont(ofSize: 13.0),
                 .paragraphStyle: paragraphStyle
             ]
