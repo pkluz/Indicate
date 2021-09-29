@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name                  = "IndicateKit"
   spec.module_name           = "Indicate"
-  spec.version               = "1.0.3"
+  spec.version               = "1.0.4"
   spec.license               = { type: "MIT" }
   spec.homepage              = "https://github.com/pkluz/indicate"
   spec.authors               = { "Philip Kluz": "philip.kluz@gmail.com" }
