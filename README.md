@@ -14,14 +14,14 @@ Interactive notification pop-over (aka "Toast) modeled after the iOS AirPods and
 
 ## Installation
 
-> The recommended way is to use CocoaPods. 
+> The recommended way is to use CocoaPods.
 
 ### CocoaPods
 
 To install Indicate for Swift 5.0+, include the following in your Podfile
 
 ```ruby
-pod 'IndicateKit', '~> 1.0.4'
+pod 'IndicateKit', '~> 1.0.5'
 ```
 
 ### Carthage
@@ -29,7 +29,7 @@ pod 'IndicateKit', '~> 1.0.4'
 To integrate Indicate into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "pkluz/Indicate" ~> 1.0.4
+github "pkluz/Indicate" ~> 1.0.5
 ```
 
 Run `carthage update` to build the framework and drag the resulting `Indicate.framework` into your Xcode project.
