@@ -66,7 +66,12 @@ extension Indicate {
             indicator = View(viewModel: ViewModel(content: content,
                                                   size: configuration.size,
                                                   contentPadding: configuration.contentPadding,
-                                                  horizontalItemSpacing: configuration.horizontalItemSpacing))
+                                                  horizontalItemSpacing: configuration.horizontalItemSpacing,
+                                                  titleColor: configuration.titleColor,
+                                                  subtitileColor: configuration.subtitleColor,
+                                                  backgroundColor: configuration.backgroundColor,
+                                                  titleFont: configuration.titleFont,
+                                                  subtitleFont: configuration.subtitleFont))
             
             super.init()
             
