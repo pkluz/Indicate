@@ -20,8 +20,8 @@ extension Indicate {
             paragraphStyle.lineBreakMode = .byTruncatingTail
             
             let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor(named: "TitleColor", in: .indicate, compatibleWith: nil) ?? UIColor.black,
-                .font: UIFont.boldSystemFont(ofSize: 13.0),
+                .foregroundColor: titleColor,
+                .font: titleFont,
                 .paragraphStyle: paragraphStyle
             ]
             
@@ -36,8 +36,8 @@ extension Indicate {
             paragraphStyle.lineBreakMode = .byTruncatingTail
             
             let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor(named: "SubtitleColor", in: .indicate, compatibleWith: nil) ?? UIColor.darkGray,
-                .font: UIFont.boldSystemFont(ofSize: 13.0),
+                .foregroundColor: subtitleColor,
+                .font: subtitleFont,
                 .paragraphStyle: paragraphStyle
             ]
             
@@ -109,6 +109,16 @@ extension Indicate {
         internal let contentPadding: UIEdgeInsets
         
         internal let horizontalItemSpacing: CGFloat
+
+        internal let titleColor: UIColor
+
+        internal let subtitleColor: UIColor
+
+        internal let backgroundColor: UIColor
+
+        internal let titleFont: UIFont
+
+        internal let subtitleFont: UIFont
         
         // MARK: ViewModel (Private Properties)
         
@@ -116,11 +126,16 @@ extension Indicate {
         
         // MARK: ViewModel (internal Methods)
         
-        internal init(content: Content, size: CGSize, contentPadding: UIEdgeInsets, horizontalItemSpacing: CGFloat) {
+        internal init(content: Content, size: CGSize, contentPadding: UIEdgeInsets, horizontalItemSpacing: CGFloat, titleColor: UIColor, subtitileColor: UIColor, backgroundColor: UIColor, titleFont: UIFont, subtitleFont: UIFont) {
             self.content = content
             self.size = size
             self.contentPadding = contentPadding
             self.horizontalItemSpacing = horizontalItemSpacing
+            self.titleColor = titleColor
+            self.subtitleColor = subtitileColor
+            self.backgroundColor = backgroundColor
+            self.titleFont = titleFont
+            self.subtitleFont = subtitleFont
         }
     }
 }

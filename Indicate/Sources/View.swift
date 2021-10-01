@@ -120,7 +120,7 @@ extension Indicate {
         
         private lazy var emojiLabel: UILabel = {
             let label = UILabel()
-            label.textColor = UIColor(named: "TitleColor", in: .indicate, compatibleWith: nil)
+            label.textColor = viewModel.titleColor
             label.font = UIFont.boldSystemFont(ofSize: 30.0)
             label.adjustsFontSizeToFitWidth = true
             label.contentMode = .center
@@ -131,8 +131,8 @@ extension Indicate {
         
         private lazy var titleLabel: UILabel = {
             let label = UILabel()
-            label.textColor = UIColor(named: "TitleColor", in: .indicate, compatibleWith: nil)
-            label.font = UIFont.boldSystemFont(ofSize: 13.0)
+            label.textColor = viewModel.titleColor
+            label.font = viewModel.titleFont
             label.textAlignment = .center
             label.numberOfLines = 2
             return label
@@ -165,7 +165,7 @@ extension Indicate {
         // MARK: View (Private Methods)
         
         private func refreshAppearance() {
-            layer.backgroundColor = (UIColor(named: "BackgroundColor", in: .indicate, compatibleWith: nil) ?? UIColor.white).cgColor
+            layer.backgroundColor = viewModel.backgroundColor.cgColor
             if #available(iOS 13.0, *) {
                 layer.cornerCurve = .continuous
             }

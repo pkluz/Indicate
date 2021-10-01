@@ -155,10 +155,7 @@ public class MainViewController: UIViewController {
                                        subtitle: .init(value: subtitle, alignment: alignment),
                                        attachment: attachment)
         
-        let configuration = Indicate.Configuration()
-            .with(tap: indicatorTapped)
-            .with(appeared: indicatorAppeared)
-            .with(dismissed: indicatorDismissed)
+        let configuration = Indicate.Configuration(tap: indicatorTapped, appeared: indicatorAppeared, dismissed: indicatorDismissed)
         
         indicatePresentationController = Indicate.PresentationController(content: content, configuration: configuration)
         indicatePresentationController?.present(in: view)
