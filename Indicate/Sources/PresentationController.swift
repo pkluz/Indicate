@@ -154,7 +154,7 @@ extension Indicate {
         // MARK: Presentation Controller (Private Methods)
         
         private func onScreenPosition(forIndicator indicator: View) -> CGPoint {
-            return CGPoint(x: indicator.superview?.center.x ?? indicator.center.x, y: indicator.bounds.height * 1.5)
+            return CGPoint(x: indicator.superview?.center.x ?? indicator.center.x, y: UINavigationController.navBarHeight() + Screen.statusBarHeight)
         }
         
         private func offScreenPosition(forIndicator indicator: View) -> CGPoint {
@@ -312,4 +312,34 @@ extension Indicate.PresentationController: UIPointerInteractionDelegate {
     public func pointerInteraction(_ interaction: UIPointerInteraction, willExit region: UIPointerRegion, animator: UIPointerInteractionAnimating) {
         rescheduleDismissTimer()
     }
+}
+
+struct Screen {
+
+ static var width: CGFloat {
+  return UIScreen.main.bounds.width
+ }
+
+ static var height: CGFloat {
+  return UIScreen.main.bounds.height
+ }
+
+ static var statusBarHeight: CGFloat {
+  let viewController = UIApplication.shared.windows.first!.rootViewController
+     if #available(iOS 13.0, *) {
+         return viewController!.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+     } else {
+         // Fallback on earlier versions
+         return 64
+     }
+ }
+
+}
+
+extension UINavigationController {
+  static public func navBarHeight() -> CGFloat {
+    let nVc = UINavigationController(rootViewController: UIViewController(nibName: nil, bundle: nil))
+    let navBarHeight = nVc.navigationBar.frame.size.height
+    return navBarHeight
+  }
 }
