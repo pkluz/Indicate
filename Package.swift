@@ -4,6 +4,10 @@ import PackageDescription
 let package = Package(
     name: "Indicate",
     defaultLocalization: "en",
+    platforms: [
+        .iOS(.v12),
+        .macOS(.v12)
+    ],
     products: [
         .library(name: "Indicate", targets: ["Indicate"])
     ],
