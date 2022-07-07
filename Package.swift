@@ -6,7 +6,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [
         .iOS(.v12),
-        .macOS(.v12)
+        .macOS(.v10_14)
     ],
     products: [
         .library(name: "Indicate", targets: ["Indicate"])
