@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "Indicate",
+    defaultLocalization: "en",
     products: [
         .library(name: "Indicate", targets: ["Indicate"])
     ],
