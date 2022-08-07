@@ -37,7 +37,8 @@ public class MainViewController: UIViewController {
             button(title: "Emoji + Right Aligned", target: self, action: #selector(presentIndicatorWithRightAlignmentAndEmoji(_:))),
             button(title: "No Image + Center Aligned", target: self, action: #selector(presentIndicatorWithCenterAlignment(_:))),
             button(title: "No Image + Left Aligned", target: self, action: #selector(presentIndicatorWithLeftAlignment(_:))),
-            button(title: "No Image + Right Aligned", target: self, action: #selector(presentIndicatorWithRightAlignment(_:)))
+            button(title: "No Image + Right Aligned", target: self, action: #selector(presentIndicatorWithRightAlignment(_:))),
+            button(title: "Extended Size", target: self, action: #selector(presentIndicatorWithExtendedSize(_:)))
         ]
     }()
     
@@ -90,6 +91,16 @@ public class MainViewController: UIViewController {
     }
     
     @objc
+    public func presentIndicatorWithExtendedSize(_ sender: Any) {
+        present(
+            alignment: .natural,
+            maybeTitle: "This is a Long Title",
+            maybeSubtitle: "And an extended subtitle string",
+            attachment: .emoji(.init(value: "🌼", alignment: .left))
+        )
+    }
+    
+    @objc
     public func presentIndicatorWithLeftAlignment(_ sender: Any) {
         present(alignment: .left, attachment: nil)
     }
@@ -116,8 +127,13 @@ public class MainViewController: UIViewController {
         print("appeared: \(controller)")
     }
     
-    private func present(alignment: NSTextAlignment, attachment: Indicate.Content.Attachment?) {
-        let title: String = {
+    private func present(
+        alignment: NSTextAlignment,
+        maybeTitle: String? = nil,
+        maybeSubtitle: String? = nil,
+        attachment: Indicate.Content.Attachment?
+    ) {
+        let title: String = maybeTitle ?? {
             switch alignment {
             case .left:
                 return "Left"
@@ -132,7 +148,7 @@ public class MainViewController: UIViewController {
             }
         }() + " Aligned"
         
-        let subtitle: String = {
+        let subtitle: String = maybeSubtitle ?? {
             switch attachment {
             case .none:
                 return "Without Attachment"
@@ -155,7 +171,12 @@ public class MainViewController: UIViewController {
                                        subtitle: .init(value: subtitle, alignment: alignment),
                                        attachment: attachment)
         
-        let configuration = Indicate.Configuration(tap: indicatorTapped, appeared: indicatorAppeared, dismissed: indicatorDismissed)
+        let configuration = Indicate.Configuration(
+            tap: indicatorTapped,
+            appeared: indicatorAppeared,
+            dismissed: indicatorDismissed,
+            contentSizingMode: .intrinsic
+        )
         
         indicatePresentationController = Indicate.PresentationController(content: content, configuration: configuration)
         indicatePresentationController?.present(in: view)

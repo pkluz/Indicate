@@ -25,10 +25,12 @@ extension Indicate {
         internal override func layoutSubviews() {
             super.layoutSubviews()
             
-            contentView.frame = CGRect(x: viewModel.contentPadding.left,
-                                       y: viewModel.contentPadding.top,
-                                       width: bounds.width - viewModel.contentPadding.left - viewModel.contentPadding.right,
-                                       height: bounds.height - viewModel.contentPadding.top - viewModel.contentPadding.bottom)
+            contentView.frame = CGRect(
+                x: viewModel.contentPadding.left,
+                y: viewModel.contentPadding.top,
+                width: bounds.width - viewModel.contentPadding.left - viewModel.contentPadding.right,
+                height: bounds.height - viewModel.contentPadding.top - viewModel.contentPadding.bottom
+            )
             
             imageView.frame = {
                 if viewModel.isImageViewHidden {
@@ -36,16 +38,20 @@ extension Indicate {
                 }
                 
                 if viewModel.isImageViewLeftAligned {
-                    return CGRect(x: 0.0,
-                                  y: 0.0,
-                                  width: contentView.bounds.height,
-                                  height: contentView.bounds.height)
+                    return CGRect(
+                        x: 0.0,
+                        y: 0.0,
+                        width: contentView.bounds.height,
+                        height: contentView.bounds.height
+                    )
                 }
                 
-                return CGRect(x: contentView.bounds.width - contentView.bounds.height,
-                              y: 0.0,
-                              width: contentView.bounds.height,
-                              height: contentView.bounds.height)
+                return CGRect(
+                    x: contentView.bounds.width - contentView.bounds.height,
+                    y: 0.0,
+                    width: contentView.bounds.height,
+                    height: contentView.bounds.height
+                )
             }()
             
             emojiLabel.frame = {
@@ -54,16 +60,20 @@ extension Indicate {
                 }
                 
                 if viewModel.isEmojiLabelLeftAligned {
-                    return CGRect(x: 0.0,
-                                  y: 0.0,
-                                  width: contentView.bounds.height,
-                                  height: contentView.bounds.height)
+                    return CGRect(
+                        x: 0.0,
+                        y: 0.0,
+                        width: contentView.bounds.height,
+                        height: contentView.bounds.height
+                    )
                 }
                 
-                return CGRect(x: contentView.bounds.width - contentView.bounds.height,
-                              y: 0.0,
-                              width: contentView.bounds.height,
-                              height: contentView.bounds.height)
+                return CGRect(
+                    x: contentView.bounds.width - contentView.bounds.height,
+                    y: 0.0,
+                    width: contentView.bounds.height,
+                    height: contentView.bounds.height
+                )
             }()
             
             titleLabel.frame = {
@@ -73,28 +83,47 @@ extension Indicate {
                 
                 if viewModel.isImageViewLeftAligned || viewModel.isEmojiLabelLeftAligned {
                     let x = max(imageView.bounds.maxX, emojiLabel.bounds.maxX) + viewModel.horizontalItemSpacing
-                    return CGRect(x: x,
-                                  y: 0.0,
-                                  width: contentView.bounds.width - x,
-                                  height: contentView.bounds.height)
+                    return CGRect(
+                        x: x,
+                        y: 0.0,
+                        width: contentView.bounds.width - x,
+                        height: contentView.bounds.height
+                    )
                 }
                 
-                return CGRect(x: 0.0,
-                              y: 0.0,
-                              width: contentView.bounds.width - viewModel.horizontalItemSpacing - max(imageView.bounds.width, emojiLabel.bounds.width),
-                              height: contentView.bounds.height)
+                return CGRect(
+                    x: 0.0,
+                    y: 0.0,
+                    width: contentView.bounds.width - viewModel.horizontalItemSpacing - max(imageView.bounds.width, emojiLabel.bounds.width),
+                    height: contentView.bounds.height
+                )
             }()
             
             refreshAppearance()
         }
         
         internal override func sizeThatFits(_ size: CGSize) -> CGSize {
-            let titleSize = titleLabel.sizeThatFits(size)
-            let attachmentWidth = viewModel.hasAttachment ? viewModel.size.height - (viewModel.contentPadding.top + viewModel.contentPadding.bottom) : 0.0
-            let size = CGSize(width: min(viewModel.size.width, viewModel.contentPadding.left + attachmentWidth + viewModel.horizontalItemSpacing + titleSize.width + viewModel.contentPadding.right),
-                              height: viewModel.size.height)
+            switch viewModel.contentSizingMode {
+            case .custom(let size):
+                let titleSize = titleLabel.sizeThatFits(size)
+                let attachmentWidth = viewModel.hasAttachment ? size.height - (viewModel.contentPadding.top + viewModel.contentPadding.bottom) : 0.0
+                let size = CGSize(
+                    width: ceil(min(size.width, viewModel.contentPadding.left + attachmentWidth + viewModel.horizontalItemSpacing + titleSize.width + viewModel.contentPadding.right)),
+                    height: ceil(size.height)
+                )
+                
+                return size
+            case .intrinsic:
+                let titleSize = titleLabel.sizeThatFits(size)
+                let attachmentWidth = viewModel.hasAttachment ? titleSize.height : 0.0
+                let size = CGSize(
+                    width: ceil(viewModel.contentPadding.left + attachmentWidth + viewModel.horizontalItemSpacing + titleSize.width + viewModel.contentPadding.right) + 1.0, // NOTE: It is necessary to add one point in width as attributed string sometimes produce an insufficiently large `sizeThatFits(_:)` result which leads to undesired linebreaks.
+                    height: ceil(titleSize.height + viewModel.contentPadding.top + viewModel.contentPadding.bottom)
+                )
+                
+                return size
+            }
             
-            return size
         }
         
         internal override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {

@@ -104,7 +104,7 @@ extension Indicate {
             return attachment.alignment == .left || (attachment.alignment == .natural && UIApplication.shared.userInterfaceLayoutDirection == .leftToRight)
         }
         
-        internal let size: CGSize
+        internal let contentSizingMode: Configuration.ContentSizingMode
         
         internal let contentPadding: UIEdgeInsets
         
@@ -126,9 +126,19 @@ extension Indicate {
         
         // MARK: ViewModel (internal Methods)
         
-        internal init(content: Content, size: CGSize, contentPadding: UIEdgeInsets, horizontalItemSpacing: CGFloat, titleColor: UIColor, subtitileColor: UIColor, backgroundColor: UIColor, titleFont: UIFont, subtitleFont: UIFont) {
+        internal init(
+            content: Content,
+            contentSizingMode: Configuration.ContentSizingMode,
+            contentPadding: UIEdgeInsets,
+            horizontalItemSpacing: CGFloat,
+            titleColor: UIColor,
+            subtitileColor: UIColor,
+            backgroundColor: UIColor,
+            titleFont: UIFont,
+            subtitleFont: UIFont
+        ) {
             self.content = content
-            self.size = size
+            self.contentSizingMode = contentSizingMode
             self.contentPadding = contentPadding
             self.horizontalItemSpacing = horizontalItemSpacing
             self.titleColor = titleColor
