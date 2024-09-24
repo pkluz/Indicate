@@ -9,6 +9,6 @@ Pod::Spec.new do |spec|
   spec.source                = { git: "https://github.com/pkluz/Indicate.git", tag: spec.version.to_s }
   spec.source_files          = "Indicate/**/*.{swift}"
   spec.resource_bundle       = { "IndicateKit": "Indicate/**/*.{xcassets}" }
-  spec.swift_version         = "5.0"
+  spec.swift_version         = "6.0"
   spec.ios.deployment_target = "12.0"
 end

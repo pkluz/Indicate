@@ -13,14 +13,14 @@ import UIKit
 extension Indicate {
     
     /// Configuration structure controlling various aspects of the `Indicate` indicator.
-    public struct Configuration {
+    public struct Configuration: Sendable {
         
-        public enum ContentSizingMode {
+        public enum ContentSizingMode: Sendable {
             case intrinsic
             case custom(CGSize)
         }
         
-        public typealias Action = (PresentationController) -> Void
+        public typealias Action = @MainActor @Sendable (PresentationController) -> Void
         
         // MARK: Configuration (Public Properties)
         
