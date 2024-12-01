@@ -1,4 +1,4 @@
-// swift-tools-version:5.4
+// swift-tools-version: 6.0
 import PackageDescription
 
 let package = Package(
@@ -16,8 +16,8 @@ let package = Package(
             name: "Indicate",
             path: "Indicate",
             exclude: [
-                "Indicate/SupportingFiles/Info.plist",
-                "Indicate/Resources/Base.lproj/LaunchScreen.storyboard"
+                "Supporting Files/Info.plist",
+                "Resources/Base.lproj/LaunchScreen.storyboard"
             ]
         )
     ]

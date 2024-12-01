@@ -11,9 +11,11 @@ import UIKit
 extension Indicate {
     
     /// Internal storage of presentation controllers to avoid deallocation in case the user does not retain a strong reference to the controller themselves.
+    @MainActor
     fileprivate static var activePresentationControllers: [UUID: PresentationController] = [:]
     
     /// This object manages the presentation of an `Indicate` view. It takes care of the entire lifecycle, gesture handling, and animations.
+    @MainActor
     public final class PresentationController: NSObject {
         
         // MARK: PresentationController (Private Types)

@@ -80,6 +80,7 @@ extension Indicate {
             return emoji.isEmpty
         }
         
+        @MainActor
         internal var isEmojiLabelLeftAligned: Bool {
             guard let attachment = content.attachment else { return true }
             return attachment.alignment == .left || (attachment.alignment == .natural && UIApplication.shared.userInterfaceLayoutDirection == .leftToRight)
@@ -99,6 +100,7 @@ extension Indicate {
             return image.size.width == 0.0 || image.size.height == 0.0
         }
         
+        @MainActor
         internal var isImageViewLeftAligned: Bool {
             guard let attachment = content.attachment else { return true }
             return attachment.alignment == .left || (attachment.alignment == .natural && UIApplication.shared.userInterfaceLayoutDirection == .leftToRight)

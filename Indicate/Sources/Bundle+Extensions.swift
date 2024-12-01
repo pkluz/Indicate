@@ -9,7 +9,7 @@
 import Foundation
 
 extension Bundle {
-    internal static var indicate: Bundle = {
+    internal static let indicate: Bundle = {
         let podBundle = Bundle(for: Indicate.View.self)
         guard let url = podBundle.url(forResource: "IndicateKit", withExtension: "bundle"), let bundle = Bundle(url: url) else {
             return podBundle
